@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="message">Complete JavaScript Course</div>
+    <div>
+        <input type="text" id="addFriend">
+        <input type="button" id="addNew" value="Add Friend">
+    </div>
+    <table id="output"></table>
+    <script>
+        // Step 1: Create an array of people's names called myArray
+        let myArray = ["John", "Jane", "Dave"];
+
+        // Step 2: Select page elements as JavaScript objects
+        const addFriendInput = document.getElementById('addFriend');
+        const addNewButton = document.getElementById('addNew');
+        const outputTable = document.getElementById('output');
+
+        // Step 3: Add event listener to the Add Friend button
+        addNewButton.addEventListener('click', addFriend);
+
+        function addFriend() {
+            // Get the value from the input field
+            const newFriendName = addFriendInput.value;
+            // Add the new friend's name into the people's names array
+            myArray.push(newFriendName);
+            // Clear the input field
+            addFriendInput.value = '';
+            // Rebuild the content on the page
+            buildContent();
+        }
+
+        // Step 4: Run a function to build the content on the page
+        function buildContent() {
+            // Clear the existing table content
+            outputTable.innerHTML = '';
+            // Iterate through the array and add them to the page
+            myArray.forEach((name, index) => {
+                // Step 5: Create a main function to create the page elements
+                const row = document.createElement('tr');
+                const indexCell = document.createElement('td');
+                const nameCell = document.createElement('td');
+                const voteCell = document.createElement('td');
+
+                // Step 6: Add content to the table cells
+                indexCell.textContent = index + 1;
+                nameCell.textContent = name;
+                voteCell.textContent = 0;
+
+                // Step 7: Add an event listener to increase the vote counter
+                row.addEventListener('click', () => {
+                    // Step 8: Increment the counter by one
+                    let voteCount = parseInt(voteCell.textContent);
+                    voteCount++;
+                    // Step 9: Update the last column with the new click counter
+                    voteCell.textContent = voteCount;
+                });
+
+                // Append table cells to the table row
+                row.appendChild(indexCell);
+                row.appendChild(nameCell);
+                row.appendChild(voteCell);
+
+                // Append the table row to the output area on the page
+                outputTable.appendChild(row);
+            });
+        }
+
+        // Initially build the content on the page
+        buildContent();
+    </script>
+</body>
+
+</html>

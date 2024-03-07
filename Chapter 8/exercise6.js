@@ -14,3 +14,30 @@
 // number from 1 to 100 each time.
 
 console.log(Math.PI)
+
+let ceilNum = 5.7;
+let floorNum = 5.7;
+let roundNum = 5.7;
+
+ceilNum = Math.ceil(ceilNum);
+floorNum = Math.floor(floorNum);
+roundNum = Math.round(roundNum);
+// console.log(ceilNum);
+// console.log(floorNum);
+// console.log(roundNum);
+
+// console.log(Math.floor(Math.random()*23));
+
+let num1 = Math.floor(Math.random()*11);
+let num2 = Math.floor(Math.random()*10) + 1;
+let num3 = Math.floor(Math.random()*100) + 1;
+
+
+function randomMinMax(min, max) {
+    return Math.floor(Math.random()*(max - min)) + 1;
+};
+
+
+for(let i = 0; i < 100; i++) {
+    console.log(randomMinMax(1, 100));
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 10.6</title>
+</head>
+<body>
+    <div class="sample-class">First element</div>
+    <p class="sample-class">Second element</p>
+    <span class="sample-class">Third element</span>
+    <div class="sample-class">Fourth element</div>
+
+    <script>
+        // Step 3: Using querySelectorAll() to select all matching occurrences of elements with the class
+        const elements = document.querySelectorAll(".sample-class");
+
+        // Step 4: Outputting all elements into the console
+        console.log("Elements as an array:", Array.from(elements));
+
+        // Looping through the elements to output them one by one
+        elements.forEach((element, index) => {
+            console.log(`Element ${index + 1}:`, element);
+        });
+    </script>
+</body>
+</html>

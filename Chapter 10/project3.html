@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hangman Game</title>
+    <style>
+        .gameArea {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .box,
+        .boxD {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        .boxE {
+            display: inline-block;
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gameArea">
+        <div class="score"> </div>
+        <div class="puzzle"></div>
+        <div class="letters"></div>
+        <button id="startBtn">Start Game</button>
+    </div>
+    <script>
+        // Step 1: Set up an array containing words for the game
+        const wordsArray = ["HELLO", "WORLD", "JAVASCRIPT", "HANGMAN"];
+
+        // Step 2: Create a game object to hold game-related properties
+        const game = {
+            currentWord: '',
+            solutionArray: [],
+            puzzleArray: [],
+            totalLettersLeft: 0,
+            letters: document.querySelector('.letters'),
+            puzzle: document.querySelector('.puzzle'),
+            scoreDisplay: document.querySelector('.score'),
+            startBtn: document.getElementById('startBtn')
+        };
+
+        // Step 3: Add event listener to the Start Game button
+        game.startBtn.addEventListener('click', startGame);
+
+        // Step 4: Function to start the game
+        function startGame() {
+            if (wordsArray.length > 0) {
+                game.startBtn.style.display = 'none'; // Hide the button
+                clearGame(); // Clear the game content
+                game.currentWord = wordsArray.shift(); // Get a word from the array
+                game.solutionArray = game.currentWord.split(''); // Split the word into an array of letters
+                buildContent(); // Build the game board
+            }
+        }
+
+        // Step 8: Function to generate a new element
+        function generateElement(type, parent, content, className) {
+            const element = document.createElement(type);
+            element.textContent = content;
+            element.className = className;
+            parent.appendChild(element);
+            return element;
+        }
+
+        // Step 7: Function to build the game board
+        function buildContent() {
+            game.puzzle.innerHTML = '';
+            game.letters.innerHTML = '';
+
+            // Loop through the solution array and create placeholders for each letter
+            game.solutionArray.forEach(letter => {
+                const newElement = generateElement('div', game.puzzle, '-', 'box');
+                if (letter !== ' ') {
+                    game.totalLettersLeft++;
+                } else {
+                    newElement.textContent = ''; // For spaces, clear the text content
+                    newElement.style.border = '1px solid white'; // Update border color
+                }
+                game.puzzleArray.push(newElement);
+            });
+
+            // Loop through the alphabet and create clickable letter elements
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const newElement = generateElement('div', game.letters, letter, 'boxE');
+                newElement.addEventListener('click', () => {
+                    checker(newElement, letter); // Add event listener to each letter
+                });
+            }
+            updateScore(); // Update the score display
+        }
+
+        // Step 15: Function to handle letter clicks
+        function checker(element, letter) {
+            element.classList.remove('boxE');
+            element.classList.add('boxD');
+            element.removeEventListener('click', () => {}); // Remove event listener
+            checkLetter(letter); // Check if the selected letter matches any letter in the solution
+        }
+
+        // Step 16: Function to check if the selected letter matches any letter in the solution
+        function checkLetter(letter) {
+            let matched = false;
+            game.solutionArray.forEach((char, index) => {
+                if (char.toUpperCase() === letter) {
+                    game.puzzleArray[index].textContent = char;
+                    game.totalLettersLeft--;
+                    matched = true;
+                }
+            });
+            updateScore(); // Update the score display
+            if (matched) {
+                element.style.backgroundColor = 'green';
+            } else {
+                element.style.backgroundColor = 'red';
+            }
+        }
+
+        // Step 18: Function to update the score display
+        function updateScore() {
+            game.scoreDisplay.textContent = `Letters Left: ${game.totalLettersLeft}`;
+            if (game.totalLettersLeft <= 0) {
+                game.startBtn.style.display = 'block'; // Show the Start Game button when all letters are guessed
+            }
+        }
+
+        // Step 9: Function to clear the game
+        function clearGame() {
+            game.currentWord = '';
+            game.solutionArray = [];
+            game.puzzleArray = [];
+            game.totalLettersLeft = 0;
+            game.puzzle.innerHTML = '';
+            game.letters.innerHTML = '';
+            game.scoreDisplay.textContent = '';
+        }
+    </script>
+</body>
+
+</html>

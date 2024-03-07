@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Attributes Exercise</title>
+    <style>
+        .box {
+            background-color: lightblue;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="html"></table>
+    <div id="message"></div>
+
+    <script>
+        // Step 1: Array of names
+        const names = ["John", "Jane", "Alice", "Bob"];
+
+        // Step 2: Selecting page elements as JavaScript objects
+        const htmlTable = document.getElementById("html");
+        const messageDiv = document.getElementById("message");
+
+        // Step 3: Building the page content
+        function build() {
+            // Step 4: Creating the HTML table
+            let htmlCode = "";
+            names.forEach((name, index) => {
+                htmlCode += `<tr data-row="${index}" data-name="${name}">
+                                <td>${name}</td>
+                             </tr>`;
+            });
+            htmlTable.innerHTML = htmlCode;
+
+            // Step 5: Adding class 'box' to one of the cells
+            const boxCells = document.querySelectorAll('td');
+            boxCells[0].classList.add('box');
+
+            // Step 6: Creating attributes 'data-row' and 'data-name'
+            const rows = document.querySelectorAll('tr');
+            rows.forEach(row => {
+                const rowIndex = row.getAttribute('data-row');
+                row.setAttribute('onclick', `getData(this)`);
+            });
+        }
+
+        // Step 8: Adding the table HTML code to the page
+        build();
+
+        // Step 9: Function to handle getting data from clicked elements
+        function getData(element) {
+            // Step 10: Getting attribute values
+            const rowIndex = element.getAttribute('data-row');
+            const name = element.getAttribute('data-name');
+
+            // Step 11: Outputting values into the message element
+            messageDiv.textContent = `Clicked row: ${rowIndex}, Name: ${name}`;
+        }
+    </script>
+</body>
+
+</html>
