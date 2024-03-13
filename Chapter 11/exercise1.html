@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 11 Exercise 1</title>
+</head>
+<body>
+    <h1>Hey Everybody</h1>
+    <p>It sure is a lovely day</p>
+    <script>
+        let screenMode = false;
+        window.onclick = () => {
+            if (!screenMode) {
+                document.body.style.backgroundColor = 'black'; // you can also use query selector document.querySelector('body').style.backgroundColor = 'black'
+                document.body.style.color = 'white';
+                screenMode = true;
+            } else if (screenMode) {
+                document.body.style.backgroundColor = 'white';
+                document.body.style.color = 'black';
+                screenMode = false;
+            }
+        }
+    </script>
+</body>
+</html>

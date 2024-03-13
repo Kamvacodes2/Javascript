@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 4</title>
+</head>
+<body>
+    <div class="block" style="width: 100px; height: 100px; background-color: pink;"></div>
+    <script>
+        let mouseMoves = document.querySelector('.block');
+        window.onload = function moveMents() {
+            mouseMoves.addEventListener("mousedown", function () {
+                changeColor(this, 'green');
+            });
+            mouseMoves.addEventListener("mouseup", function () {
+                changeColor(this, "blue");
+            })
+
+            mouseMoves.addEventListener("mouseover", function () {
+                changeColor(this, "red");
+            })
+            mouseMoves.addEventListener('mouseout', function () {
+                changeColor(this, "yellow");
+            })
+        }
+    
+        function changeColor(e, color){
+            e.style.backgroundColor = color;
+            console.log(color);
+            console.log(typeof(e))
+        }
+    </script>
+</body>
+</html>

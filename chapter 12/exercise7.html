@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <style>
+        .ready {
+            background-color: #ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>Add</button>
+    </div>
+    <ul class="output">
+    </ul>
+    <script>
+        let main1 = document.querySelector(".main");
+        let item1 = document.querySelector('input');
+        let addButton = document.querySelector('button');
+        let tasks = JSON.parse(localStorage.getItem('tasklist')) || [];
+
+        addButton.addEventListener('click', )
+    </script>
+</body>
+
+</html>

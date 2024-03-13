@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="message"></div>
+    <div id="output"></div>
+    <button onclick="build()">Build Table</button>
+    <script>
+        let nameList = ['Lindelwa','Shawn','Kamva','Tumelo','Angelique'];
+        let div1 = document.getElementById('message');
+        let div2 = document.getElementById('output');
+        function build() {
+            let html = '<tabel>'
+                nameList.forEach((element, indx) => {
+                    html += `<tr data-row="${indx + 1}" data-name="${element}" onclick="getData('this')"><td>${element}</td><td>${indx + 1}</td></tr>`
+                })
+            html += '</table>'
+            document.getElementById('output').innerHTML = html;
+            console.log(html);
+        }
+
+    </script>
+</body>
+</html>

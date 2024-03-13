@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 5</title>
+</head>
+<body>
+    <h1><b>Number Checker</b></h1>
+    <div>
+        <!-- <input type="text" id="input1"> -->
+    </div>
+    <br>
+    <!-- <button>Enter</button> -->
+   <script>
+        'use strict';
+        // let numValue = document.getElementById('input1');
+        // let btn = document.querySelector('button');
+
+        // function startCheck() {
+        //     let parseStep = parseInt(numValue.value);
+        //     numCheck(parseStep);
+        // }
+
+        // btn.addEventListener('click', numCheck);
+
+        function numCheck(val) {
+            try {
+                if(isNaN(val)) {
+                    throw 'This is not a number!;'
+                } else {
+                    alert('This is indeed a number')
+                }
+            } catch (e) {
+                console.error(e);
+            } finally {
+                alert("Completed" + "" + val);
+            }
+        }
+
+        // numCheck(22);
+        numCheck('alex')
+   </script> 
+</body>
+</html>

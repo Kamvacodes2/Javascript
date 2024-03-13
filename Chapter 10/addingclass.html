@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        function appear() {
+            document.getElementById("shape").classList.remove("hide")
+            console.log(document.getElementById("shape"));
+        }
+    </script>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .square {
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+        }
+
+        .square.blue {
+            background-color: blue;
+        }
+    </style>
+    <div id="shape" class="square blue hide"></div>
+
+    <button onclick="appear()">Appear!</button>
+</body>
+
+</html>

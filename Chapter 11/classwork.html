@@ -1,0 +1,112 @@
+<!-- Specifying events with HTML -->
+<!-- 
+    <p id="unique" onclick="magic()">Click here for magic!</p>
+    As soon as you click on the paragraph, the function magic() will be triggered.
+    downsides: you can only
+    specify one event this way, and you cannot change the event dynamically either
+
+    Specifying events with JavaScript:
+    document.getElementById("unique").onclick = function() { magic(); };
+ -->
+
+
+<!-- Specifying events with event listeners
+    we can specify multiple functions for the same event
+    document.getElementById("unique").addEventListener("click", magic);
+    Please note that we are leaving out the parentheses behind the magic function here.
+    We cannot send in parameters like this.
+
+    If that is something you have to do, you'd
+    have to wrap the functionality in an anonymous function, like this:
+
+    document.getElementById("unique").addEventListener("click", function(){ magic(arg1, arg2) });
+-->
+
+
+<!-- The onload event handler -->
+
+<!-- window.onload = function() { -->
+<!-- whatever needs to happen after the page loads goes here
+   } -->
+
+
+<!-- The load event fires at the
+end of the document loading process. -->
+
+<!-- document.addEventListener("DOMContentLoaded", (e) => {
+    console.log(e);
+
+You cannot combine addEventListener() and the HTML
+by using them together.
+
+. If you need two events to happen when the DOM is loaded, you will
+need two addEventListener() calls in your JavaScript.
+-->
+
+
+<!-- Mouse event handlers -->
+
+<!-- There are different mouse event handlers. Mouse events are actions of the mouse.
+These are the ones we have:
+
+
+• ondblclick: when the mouse is double-clicked
+• onmousedown: when the mouse clicks on top of an element without the click being released
+• onmouseup: when the mouse click on top of an element is released
+• onmouseenter: when the mouse moves onto an element
+• onmouseleave: when the mouse leaves an element and all of its children
+• onmousemove: when the mouse moves over an element
+• onmouseout: when the mouse leaves an individual element
+• onmouseover: when the mouse hovers over an element -->
+
+
+
+<!-- The event target property -->
+<!-- 
+<!doctype html>
+<html>
+
+<body>
+    <button type="button" onclick="triggerSomething()">Click</button>
+    <script>
+        function triggerSomething() {
+            console.dir(event.target);
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- In the above case, event.target is the button element. In the console, the button element
+and all its properties will be logged, including potential siblings and parents -->
+
+
+<!-- A use case where parent properties can come in handy is in the case of HTML forms,
+where there are multiple input fields and a button. A button in a form would often
+have the form as its direct parent. Via this parent, data from the input fields can be
+fetched -->
+
+<!-- <!doctype html>
+<html>
+
+<body>
+    <div id="welcome">Hi there!</div>
+    <form>
+        <input type="text" name="firstname" placeholder="First name" />
+        <input type="text" name="lastname" placeholder="Last name" />
+        <input type="button" onclick="sendInfo()" value="Submit" />
+    </form>
+    <script>
+        function sendInfo() {
+            let p = event.target.parentElement;
+            message("Welcome " + p.firstname.value + " " + p.lastname.
+                value);
+        }
+        function message(m) {
+            document.getElementById("welcome").innerHTML = m;
+        }
+    </script>
+</body>
+
+</html> -->
+

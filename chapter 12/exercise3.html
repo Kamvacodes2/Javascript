@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 3</title>
+</head>
+<body>
+    <h1>Looper</h1>
+    <div class="output"></div>
+    <div>
+        <input type="text" id="first">Enter a name
+        <br>
+        <input type="text" id="second">Enter another name
+        <br>
+        <input type="text" id="third">Enter one more name
+        <br>
+        <br>
+        <button>Get Last Name</button>
+    </div>
+    <script>
+        'use strict';
+        let finalOutput = document.querySelector('.output');
+        let first = document.getElementById('first');
+        let second = document.getElementById('second');
+        let third = document.getElementById('third');
+        let butTon = document.querySelector('button');
+
+        butTon.addEventListener('click', lastName);
+
+        function lastName() {
+            lastCount(first.value, second.value, third.value)
+        }
+        
+        function lastCount() {
+            let lastone = ""
+            for (let i = 0; i < arguments.length; i++) {
+                lastone = arguments[i];
+            }
+            alert(`The last name is ${lastone}`);
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+    <script>
+        let outPut = document.getElementsByClassName('output');
+        let inPut = document.querySelector('input');
+        let buttIns = document.getElementsByClassName('.btn1');
+        let buttIns2 = document.getElementsByClassName('.btn2');
+        let buttIns3 = document.getElementsByClassName('.btn3');
+        let log = []
+
+        function logging(e) {
+           let p =  e.target.parentElement
+           log.push(p.message.value)
+        }
+    </script>
+</body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="blue">blue</div>
+    <div class="red">red</div>
+    <div class="green">green</div>
+    <div class="black">black</div>
+    <script>
+        let divClass = document.querySelectorAll('div');
+        divClass.forEach(div => div.addEventListener('click', changeColors));
+        function changeColors(e) {
+            if (e.target.style.backgroundColor !== e.target.textContent) {
+                e.target.style.backgroundColor = e.target.textContent;
+            } else {
+                e.target.style.backgroundColor = 'white';
+            }
+        };
+    </script>   
+</body>
+</html>

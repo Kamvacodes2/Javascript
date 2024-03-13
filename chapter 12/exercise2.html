@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" placeholder="Enter Email">
+    <button>Check</button>
+    <script>
+        'use strict'
+        let outPut1 = document.querySelector('.output')
+        let email = document.querySelector('input');
+        let checker = document.querySelector('button');
+
+        checker.addEventListener('click', validCheck);
+
+        let validEmail = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/
+
+        function validCheck() {
+            let regexCheck = new RegExp(validEmail, "gi");
+            let testResult = false;
+            let colorChange = 'green';
+            let result = email.value.match(regexCheck);
+            console.log(result);
+            if (result !== null) {
+                alert(`${email.value} is a valid Email`);
+                testResult = true;
+                email.style.color = colorChange;
+                outPut1.innerHTML = email.value;
+                outPut1.style.color = colorChange;
+            }
+            if (testResult === false) {
+                alert('not a valid email');
+            }
+        }
+    </script>
+</body>
+
+</html>

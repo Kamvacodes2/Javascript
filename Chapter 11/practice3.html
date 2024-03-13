@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xhapter 9 Practice Exercise 3</title>
+</head>
+<body>
+    <h1>Hello To The World</h1>
+    <p>Pink</p>
+    <script>
+        function message(string, event) {
+            console.log(string, event);
+        };
+
+        document.addEventListener('DOMContentLoaded', (e) => {
+            message('The document has loaded', e);
+        });
+        
+        window.onload = (e) => {
+            message('The window has loaded', e);
+        };
+
+    </script>
+</body>
+</html>
