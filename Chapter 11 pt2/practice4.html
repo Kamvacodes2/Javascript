@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 4</title>
+</head>
+<body>
+   <div class="box">
+   </div> 
+   <script>
+    'use strict'
+    let box1 = document.querySelector('.box');
+    box1.innerHTML = '<b>Hello World</b>';
+    box1.style.width = '200px';
+    box1.style.height = '200px';
+    box1.style.backgroundColor = "aliceblue";
+
+
+    box1.addEventListener('mouseover', (e) => {
+        changeColor('green', e);
+    });
+    box1.addEventListener('mousedown', (e) => {
+        changeColor('yellow', e);
+    });
+    box1.addEventListener('mouseout', (e) => {
+        changeColor('blue', e);
+    });
+    box1.addEventListener('mouseup', (e) => {
+        changeColor('red', e);
+    });
+
+    function changeColor(color, event) {
+        console.log(color);
+        console.log(event.type);
+        box1.style.backgroundColor = color;
+    }
+
+   </script>
+</body>
+</html>

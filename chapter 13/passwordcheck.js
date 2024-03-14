@@ -3,7 +3,7 @@
 let allowedPasswrds = ['kittens', 'luckyman', 'greatkeys'];
 
 function login(attempt) {
-    let loggedIn = allowedPasswrds.includes(attempt);
+    let loggedIn = allowedPasswrds.includes(attempt); // true or false
     return new Promise((resolve, reject) => {
       if (loggedIn) {
         resolve({status: true});
@@ -26,4 +26,4 @@ function passwordCheck(attempt) {
   
 }
 
-passwordCheck('luckyman');
+passwordCheck('greatkeys');

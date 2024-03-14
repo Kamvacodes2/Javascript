@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise</title>
+</head>
+<body>
+    <h1>The Colors Of The Rainbow</h1>
+    <div class="green">green</div>
+    <div class="blue">blue</div>
+    <div class="yellow">yellow</div>
+    <div class="orange">orange</div>
+    <div class="purple">purple</div>
+    <div class="red">red</div>
+    <script>
+        let divs = document.querySelectorAll('div');
+        divs.forEach((element) => {
+            element.addEventListener('click', function() {
+
+                if (element.style.backgroundColor !== element.innerText) {
+                    element.style.backgroundColor = element.innerText;
+                } else {
+                    element.style.backgroundColor = 'white';
+                }
+            })
+        })
+    </script>
+</body>
+</html>

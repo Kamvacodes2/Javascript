@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 1</title>
+</head>
+<body>
+    <h1>Lets start</h1>
+    <script>
+        let headIng = document.querySelector('h1');
+        let bodyEffect = document.querySelector('body');
+        let colorStatus = false;
+        window.onclick = function() {
+            if (!colorStatus) {
+                bodyEffect.style.backgroundColor = 'black';
+                headIng.style.color ="white";
+                colorStatus = true;
+            } else {
+                bodyEffect.style.backgroundColor = 'white';
+                headIng.style.color =  "black";
+                colorStatus = false
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -239,3 +239,11 @@
 //! The attributes in this example are id, class, and href.
 // ? With the setAttribute() method, we can add or change attributes on an element
 // This will change the HTML of the page
+
+
+
+// Creating new elements
+
+let el = document.createElement("p");
+el.innerText = Math.floor(Math.random() * 100);
+document.body.appendChild(el);

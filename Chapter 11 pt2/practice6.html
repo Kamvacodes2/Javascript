@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box" id="box0">Box #1</div>
+        <div class="box" id="box1">Box #2</div>
+        <div class="box" id="box2">Box #3</div>
+        <div class="box" id="box3">Box #4</div>
+    </div>
+    <script>
+        let divContainer = document.querySelector('.container');
+        let divs = document.querySelectorAll('.box');
+
+        divContainer.addEventListener('click', (e) => {
+            console.log("4")
+        }, false);
+        divContainer.addEventListener('click', (e) => {
+            console.log('1')
+        }, true);
+
+        divs.forEach((item) => {
+            item.addEventListener('click', (e)=> {
+                console.log('3')
+                console.log(item.textContent)
+            },false);
+            item.addEventListener('click', (e) => {
+                console.log('2')
+                console.log(item.textContent)
+            }, true)
+        })
+    
+    </script>
+</body>
+
+</html>

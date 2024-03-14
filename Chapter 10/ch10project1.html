@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+    <style>
+        .active {
+            display: block !important;
+        }
+
+        .myText {
+            display: none;
+        }
+
+        .title {
+            font-size: 1.5em;
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Title #1</div>
+        <div class="myText">Just some text #1</div>
+        <div class="title">Title #2</div>
+        <div class="myText">Just some text #2</div>
+        <div class="title">Title #3</div>
+        <div class="myText">Just some text #3</div>
+    </div>
+    <script>
+        let titleArr = document.querySelectorAll('.title');
+        let myTextArr = document.querySelectorAll('.myText');
+
+        titleArr.forEach((title) => {
+            title.addEventListener('click', function (){
+                let nextSib = title.nextElementSibling
+                remove();
+                nextSib.classList.toggle('active')
+            })
+        })
+
+        function remove() {
+            myTextArr.forEach((text) => {
+               text.classList.remove('active')
+            })
+        }
+    </script>
+</body>
+
+</html>

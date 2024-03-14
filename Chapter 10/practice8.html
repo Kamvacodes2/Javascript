@@ -8,19 +8,27 @@
 <body>
     <div id="message"></div>
     <div id="output"></div>
-    <button onclick="build()">Build Table</button>
+    <button>Build Table</button>
     <script>
-        let nameList = ['Lindelwa','Shawn','Kamva','Tumelo','Angelique'];
+        let nameList = ['Lindelwa','Shawn', 'Eben', 'Lisa', 'Marvelous','Jackie'];
         let div1 = document.getElementById('message');
         let div2 = document.getElementById('output');
+        let bTon = document.querySelector('button')
+        bTon.addEventListener('click',build)
         function build() {
-            let html = '<tabel>'
+            let html = '<h1>My Friends Table</h1><table border=2 width="150">';
                 nameList.forEach((element, indx) => {
-                    html += `<tr data-row="${indx + 1}" data-name="${element}" onclick="getData('this')"><td>${element}</td><td>${indx + 1}</td></tr>`
+                    html += `<tr><td onclick="getData(this)" data-row="${element}" data-name="${indx+1}">${element}</td><td>${indx + 1}</td></tr><br>`
                 })
             html += '</table>'
-            document.getElementById('output').innerHTML = html;
+            div2.innerHTML = html;
             console.log(html);
+        }
+
+        function getData(e) {
+            let element = e.getAttribute('data-row')
+            let elIndex = e.getAttribute('data-name')
+            div1.innerHTML = `${element} is at # ${elIndex}`
         }
 
     </script>

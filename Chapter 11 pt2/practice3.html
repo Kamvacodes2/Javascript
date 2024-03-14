@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 3</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        function message(str, event) {
+            let e = event.target;
+            console.log(str)
+            console.log(e)
+        }
+
+        document.addEventListener('DOMContentLoaded', function (e) {
+            message('Document Ready', e);
+        })
+
+
+        window.onload = function (e) {
+            message('Window ready', e)
+        }
+
+
+    </script>
+</body>
+
+</html>

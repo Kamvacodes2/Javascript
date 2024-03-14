@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input type="text" name="message" placeholder="Your Message">
+    <button class="btn1">Button 1</button>
+    <button class="btn2">Button 2</button>
+    <div>
+        <button class="btn3">Log</button>
+    </div>
+    <script>
+        let outPut = document.querySelector('.output');
+        let inputField = document.querySelector('input');
+        let bTon1 = document.querySelector('.btn1');
+        let bTon2 = document.querySelector('.btn2');
+        let bTon3 = document.querySelector('.btn3');
+        let log = [];
+
+        bTon1.addEventListener('click', logging)
+        bTon2.addEventListener('click', logging)
+        bTon3.addEventListener('click', () => {
+            console.log(log);
+        })
+
+        function logging() {
+            let obj1 = event.target;
+            let inputV = inputField.value;
+            let objects = {input: inputV, type: obj1.type, name: obj1.className, "Tag-name": obj1.tagName}
+            log.push(objects);
+
+            outPut.textContent = inputV
+            inputField.value = " "
+        }
+    </script>
+</body>
+
+</html>
