@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 8</title>
+</head>
+<body>
+    <div class="output"></div>
+    <input type="text">
+    <input type="text">
+    <script>
+        'use strict';
+        let output = document.querySelector('.output');
+        let eles = document.querySelectorAll('input');
+
+        eles.forEach((item) => {
+            item.addEventListener('keydown', function(e) {
+                keyChange(e.key);
+                
+            })
+            item.addEventListener('keyup', function (e) {
+                console.log(e.key);
+            })
+            item.addEventListener('paste', function (e) {
+                console.log(e.type);
+            })
+        });
+
+        function keyChange(m) {
+            if (!isNaN(m)) {
+                return output.innerHTML += m;
+            }
+        }
+    </script>
+</body>
+</html>

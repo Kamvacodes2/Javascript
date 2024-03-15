@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+<body>
+    <div id="divvy" style="width: 100px; height: 100px; background-color: pink;">
+        <script>
+            let div1 = document.querySelector('div')
+            div1.textContent = 'Hello World'
+
+            div1.addEventListener("mousedown", function(e) {
+                changeColors('green', e);
+            });
+            div1.addEventListener("mouseover", function(e) {
+                changeColors('red', e);
+            });
+            div1.addEventListener("mouseout", function(e) {
+                changeColors('yellow', e);
+            });
+            div1.addEventListener("mouseup", function(e) {
+                changeColors('blue', e);
+            });
+
+
+            function changeColors(color, event) {
+                console.log(color);
+                console.log(event.type);
+                div1.style.backgroundColor = color;
+            }
+        </script>
+</body>
+
+</html>

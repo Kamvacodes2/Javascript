@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <div class="output1">
+    </div>
+    <input type="text" placeholder="First Name" name="first"><br>
+    <input type="text" placeholder="Last Name" name="last"><br>
+    <script>
+        let outputDisplay = document.querySelector('.output1');
+        let input1 = document.querySelector('input[name="first"]');
+        let input2 = document.querySelector('input[name="last"]');
+
+        input1.addEventListener('change',(e) => {
+            logg(e)
+        });
+
+        input1.addEventListener('focus',(e) => {
+            logg(e)
+            console.log('focus')
+        });
+        input1.addEventListener('blur',(e) => {
+            logg(e)
+            console.log('blur')
+        });
+        input2.addEventListener('blur', (e) => {
+            logg(e)
+        });
+        input2.addEventListener('change', (e) => {
+            logg(e)
+            console.log('change')
+        });
+        input2.addEventListener('focus', (e) => {
+            logg(e)
+            console.log('focus')
+        });
+
+
+
+        function logg(e) {
+            let x = e.target
+            if (x.name == "first") {
+                updateDisplay(`First Name is ${x.value}`)
+            } else {
+                updateDisplay(`Last Name is ${x.value}`)
+            }
+        }
+
+
+        function updateDisplay(e) {
+            outputDisplay.textContent = e
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 1</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        let colorMode = true
+        window.onclick = changeMode;
+
+        let x =  document.querySelector('body');
+        console.log(x);
+
+        function changeMode() {
+            if (colorMode) {
+              x.style.backgroundColor = 'black';
+              colorMode = false;
+            } else {
+                x.style.backgroundColor = 'white';
+                colorMode = true;
+            }
+        }
+
+        
+    </script>
+    
+</body>
+</html>

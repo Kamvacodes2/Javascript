@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JS Tester</title>
+</head>
+
+<body>
+    <div class="output1">
+    </div>
+    <input type="text" placeholder="First Name" name="first"><br>
+    <input type="text" placeholder="Last Name" name="last"><br>
+    <script>
+        let outputDisplay = document.querySelector('.output1');
+        let input1 = document.querySelector('input[name="first"]');
+        let input2 = document.querySelector('input[name="last"]');
+
+        input1.addEventListener('change', function(e) {
+            contentOut(this);
+        } )
+        input1.addEventListener('blur', function(e) {
+            contentOut(this);
+            console.log(e.type)
+        } )
+        input1.addEventListener('focus', function(e) {
+            contentOut(this);
+            console.log(e.type)
+        } )
+        input2.addEventListener('change', function(e) {
+            contentOut(this);
+        })
+        input2.addEventListener('blur', function(e) {
+            contentOut(this);
+            console.log(e.type)
+        } )
+        input2.addEventListener('focus', function(e) {
+            contentOut(this);
+            console.log(e.type)
+        })
+
+        function contentOut(m) {
+            outputDisplay.textContent = m.value
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Exercise 2</title>
+</head>
+<body>
+    <div>green</div>
+    <div>blue</div>
+    <div>yellow</div>
+    <div>purple</div>
+    <div>red</div>
+    <div>orange</div>
+    <script>
+        'use strict';
+
+        let divArray = document.querySelectorAll('div');
+        divArray.forEach((div) => {
+            div.addEventListener('click', ()=> {
+                document.body.style.backgroundColor = div.textContent;
+            })
+        })
+    </script>
+</body>
+</html>
