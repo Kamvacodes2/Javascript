@@ -9,10 +9,6 @@
     <div>Click Here</div>
     <script>
         'use strict';
-        document.addEventListener('DOMContentLoaded', (element)=> {
-            message('The document has loaded:', element);
-        })
-
         window.onload = ((e) => {
             message('The window has loaded', e)
         })
@@ -21,6 +17,11 @@
             console.log(str);
             console.log(object)
         }
+
+        document.addEventListener('DOMContentLoaded', (element)=> {
+            message('The document has loaded:', element);
+        })
+
     </script>
 </body>
 </html>

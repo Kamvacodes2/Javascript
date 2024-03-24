@@ -24,8 +24,75 @@
         let item1 = document.querySelector('input');
         let addButton = document.querySelector('button');
         let tasks = JSON.parse(localStorage.getItem('tasklist')) || [];
+        let output = document.querySelector('.output');
 
-        addButton.addEventListener('click', )
+        if (tasks.length > 0) {
+            item1.value = ""
+            let p = createlistItems(tasks, 'local')
+            output.replaceChildren(...p)
+        }
+
+
+        console.log(tasks)
+        // tasks.forEach((task) => {
+        //     let x;
+        //     x = {name: task.value, 'checked-status': true}
+        // })
+
+        console.log(document.querySelector('body'))
+
+        function saveList () {
+            localStorage.setItem('tasklist', JSON.stringify(tasks))
+        }
+
+        function createlistItems(taskArray,section) {
+            // create if statement that says if value is > 0 make constant within if statement 
+            //checking if false , let value check false
+            // implement a save function and test if it affects the local Storage
+            return taskArray.map((task, index) => {
+            let listEle = document.createElement('li');
+            let checkedEle = document.createElement('input');
+            let labelEle = document.createElement('label');
+
+            checkedEle.setAttribute('type', 'checkbox');
+            checkedEle.setAttribute('id', `${taskArray[index].value}`);
+            
+            labelEle.setAttribute('for', `${taskArray[index].value}`);
+
+            checkedEle.addEventListener('click', function() {
+                taskArray[index].checked = !taskArray[index].checked
+                labelEle.classList.toggle('ready');
+            });
+            labelEle.textContent = task.value
+            listEle.append(checkedEle, labelEle)// <li>checkbox -name of the item</li>
+            remakeList();
+            return listEle;
+           })
+           
+        }
+
+        function remakeList() {
+           let newList = output.childNodes
+           console.log(newList.innerText);
+        }
+
+        function createItem() {
+            let value1 = item1.value;
+            let obj1 = {
+                value: item1.value,
+                checked: false,
+            }
+            tasks.push(obj1)
+            
+            let x = createlistItems(tasks,'local')
+            console.log(x)
+            output.replaceChildren(...x)
+            saveList();
+            item1.value = ''
+        }
+
+
+        addButton.addEventListener('click', createItem)
     </script>
 </body>
 

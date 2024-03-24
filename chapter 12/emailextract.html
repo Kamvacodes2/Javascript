@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <textarea name="txtarea" rows=2 cols=50></textarea> <button>Get
+        Emails</button>
+    <textarea name="txtarea2" rows=2 cols=50></textarea>
+    <script>
+        'use strict'
+
+        let text1 = document.querySelector('textarea[name=txtarea]');
+        let btN = document.querySelector('button');
+        let text2 = document.querySelector('textarea[name=txtarea2]');
+
+
+        btN.addEventListener('click', findMatch)
+
+        function findMatch() {
+            let textInput = text1.value
+            let regexCheck = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi
+            let text2Data = textInput.match(regexCheck);
+            let emptyArr = [];
+
+            for (let x = 0; x < text2Data.length; x++) {
+                if (emptyArr.indexOf(text2Data[x]) ==-1 ) {
+                    emptyArr.push(text2Data[x])
+                }
+            }
+
+            text2.value = emptyArr.join(", ")
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.8em;
+            font-family: sans-serif;
+            font-style: italic;
+        }
+
+        input {
+            border-color: #ddd;
+            width: 400px;
+            display: block;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="myform"> Email :
+        <input type="text" name="email"> <span class="error hide">
+            </span>
+            <br> Password :
+            <input type="password" name="password" >
+            <span class="error hide"></span>
+            <br> User Name :
+            <input type="text" name="userName"> <span class="error hide"></span>
+                <br>
+                <input type="submit" value="Sign Up">
+    </form>
+    <script>
+        'use strict';
+        let theForm = document.querySelector('form');
+        let inputsList = document.querySelectorAll('input');
+        let errorList = document.querySelectorAll('.error.hide');
+        let requiredEle = ['email', 'userName'];
+        theForm.addEventListener('submit', validate);
+
+        function validate(event) {
+            event.preventDefault();
+            let status = false;
+            
+            for (let i = 0; i < errorList.length; i++) {
+                errorList[i].classList.add('hide');
+            }
+        inputsList.forEach( function(ele) {
+            let dataObj = {};
+            let eleName = ele.getAttribute('name');
+            if (eleName != null) {
+                ele.style.borderColor = 'grey'
+                if (ele.value.length == 0 && requiredEle.includes(eleName)) {
+                    errorTrigger(ele, 'Required Field', eleName);
+                    status = true;
+                }
+
+                if (eleName == 'email') {
+                    let emailInput = ele.value;
+                    let regexCheck = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
+                    let check = regexCheck.test(emailInput);
+                    if (!check) {
+                        errorTrigger(ele, 'Email is Invalid', eleName);
+                        status = true;
+                    }
+                }
+                if (eleName == 'password') {
+                    let passWrd = ele.value;
+                    let passCheck = /[A-Za-z0-9]+$/;
+                    let passTest = passCheck.test(passWrd);
+                    if (!passTest) {
+                        errorTrigger(ele, 'Password requires letters and numbers only!', eleName);
+                        status = true;
+                    }
+                    if (!(ele.value.length > 3 && ele.value.length < 9)) {
+                        errorTrigger(ele, 'Needs to be between 3-8 characters', eleName);
+                        status = true;
+                    }
+                }
+                dataObj[eleName] = ele.value;
+            }
+        });
+        if (!status) {
+            theForm.submit();
+        }
+        }
+
+        function errorTrigger(el, message, field) {
+            let ele = el.nextElementSibling;
+            ele.classList.remove('hide');
+            ele.textContent = field.toUpperCase() + " " + message;
+            ele.style.borderColor = 'red'
+            ele.focus();
+        }
+    </script>
+</body>
+
+</html>
